@@ -1,0 +1,7 @@
+﻿01BGMAX               0120040525173035010331P                                   
+05BGMAX               0120040525173035010331P                                   
+15BGMAX               0120040525173035010331P                                   
+
+XXBGMAX               0120040525173035010331P                                   
+90BGMAX               starts with invalid transaktionskod
+70BGMAX               not 80 chars long

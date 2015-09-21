@@ -35,12 +35,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Avsnitt.cs" />
+    <Compile Include="Betalposter\IBetalpost.cs" />
+    <Compile Include="Betalposter\TK15Insättningspost.cs" />
+    <Compile Include="Betalposter\TK20Betalpost.cs" />
+    <Compile Include="Betalposter\TK21Avdragspost.cs" />
+    <Compile Include="Betalposter\TK22Extrareferensnummerpost.cs" />
+    <Compile Include="Betalposter\TK23Extrareferensnummerpost.cs" />
+    <Compile Include="Betalposter\TK25Informationspost.cs" />
+    <Compile Include="Betalposter\TK26Namnpost.cs" />
+    <Compile Include="Betalposter\TK27Adresspost1.cs" />
+    <Compile Include="Betalposter\TK28Adresspost2.cs" />
+    <Compile Include="Betalposter\TK29Organisationsnummerpost.cs" />
+    <Compile Include="Betalposter\TK70Slutpost.cs" />
+    <Compile Include="Betalposter\TK01Startpost.cs" />
+    <Compile Include="Betalposter\TK05Öppningspost.cs" />
     <Compile Include="BgMaxData.cs" />
-    <Compile Include="BgMaxReader.cs" />
+    <Compile Include="BgMaxComposer.cs" />
+    <Compile Include="BgMaxFileReader.cs" />
+    <Compile Include="ITransaktionspost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Slutpost.cs" />
-    <Compile Include="Startpost.cs" />
-    <Compile Include="Öppningspost.cs" />
+    <Compile Include="TextToITransaktionsradConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

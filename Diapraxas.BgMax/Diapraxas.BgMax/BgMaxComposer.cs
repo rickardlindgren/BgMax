@@ -1,27 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
+using Diapraxas.BgMax.Betalposter;
 
 namespace Diapraxas.BgMax
 {
-    public static class BgMaxReader
+    public static class BgMaxComposer
     {
-        public static BgMaxData ReadFile(string path)
+
+        public static BgMaxData ComposeFromFile(string path)
         {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException("Hittade inte filen.", path);
-            }
-
-            var textrows = File.ReadLines(path, Encoding.Default)
-                .Where(l => !string.IsNullOrEmpty(l))
-                .ToList();
-            var startPost = new Startpost(textrows.First());
+            var textrows =new BgMaxFileReader().ReadFile(path);
+            var rows2 = new BgMaxFileReader().ReadFile2(path);
+            var startPost = new TK01Startpost(textrows.First());
             var slutRad = textrows.First(t => t.Substring(0, 2) == "70");
-            var slutPost = new Slutpost(slutRad);
+            var slutPost = new TK70Slutpost(slutRad);
 
-            var avdelningsrader = GetAvdelningsrader(textrows);
+            var avdelningsrader = GetAvdelningsrader(null);
             var avsnitt = new List<Avsnitt>();
             foreach (var avdelning in avdelningsrader)
             {
