@@ -9,10 +9,10 @@ namespace Diapraxas.BgMax
         public TK70Slutpost TK70Slutpost { get; private set; }
         public List<Avsnitt> Avsnitt { get; private set; }
 
-        internal BgMaxData(TK01Startpost tk01Startpost, TK70Slutpost tk07Slutpost, List<Avsnitt> avsnitt)
+        internal BgMaxData(TK01Startpost tk01Startpost, TK70Slutpost tk70Slutpost, List<Avsnitt> avsnitt)
         {
             TK01Startpost = tk01Startpost;
-            TK70Slutpost = tk07Slutpost;
+            TK70Slutpost = tk70Slutpost;
             Avsnitt = avsnitt;
         }
     }

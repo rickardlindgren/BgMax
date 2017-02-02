@@ -1,12 +1,15 @@
 ﻿namespace Diapraxas.BgMax.Betalposter
 {
-    class TK28Adresspost2 : IBetalpost
+    public class TK28Adresspost2 : IBetalpost
     {
-        private string t;
-
-        public TK28Adresspost2(string t)
+        public string Ortsadress { get; private set; }
+        public string Land { get; private set; }
+        public string Landkod { get; private set; }
+        public TK28Adresspost2(string textrad)
         {
-            this.t = t;
+            Ortsadress = textrad.Substring(2, 35);
+            Land = textrad.Substring(37, 35);
+            Landkod = textrad.Substring(72, 2);
         }
 
         public bool KanLäggaTillPoster
