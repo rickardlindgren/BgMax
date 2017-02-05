@@ -9,17 +9,17 @@ namespace Diapraxas.BgMax
 
         public static BgMaxData ComposeFromFile(string path)
         {
-            var textrows =new BgMaxFileReader().ReadFile(path);
-            var rows2 = new BgMaxFileReader().ReadFile2(path);
+            var textrows = new BgMaxFileReader().ReadFile(path);
             var startPost = new TK01Startpost(textrows.First());
+
             var slutRad = textrows.First(t => t.Substring(0, 2) == "70");
             var slutPost = new TK70Slutpost(slutRad);
 
-            var avdelningsrader = GetAvdelningsrader(null);
+            var avdelningsrader = GetAvdelningsrader(textrows);
             var avsnitt = new List<Avsnitt>();
             foreach (var avdelning in avdelningsrader)
             {
-                avsnitt.Add(new Avsnitt());
+                avsnitt.Add(new Avsnitt(avdelning));
             }
 
             return new BgMaxData(startPost, slutPost, avsnitt);
@@ -27,25 +27,23 @@ namespace Diapraxas.BgMax
 
         private static List<List<string>> GetAvdelningsrader(List<string> textrows)
         {
-            bool isAvdelning = false;
             var rowlists = new List<List<string>>();
             var rowlist = new List<string>();
-
+            
             foreach (var textrow in textrows)
             {
                 if (textrow.StartsWith("05"))
                 {
-                    isAvdelning = true;
                     rowlist = new List<string>();
                 }
+
+                rowlist.Add(textrow);
+
                 if (textrow.StartsWith("15"))
                 {
-                    isAvdelning = false;
                     rowlists.Add(rowlist);
                 }
             }
-
-
 
             return rowlists;
         }

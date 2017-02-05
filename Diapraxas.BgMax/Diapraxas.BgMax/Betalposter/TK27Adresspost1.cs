@@ -2,11 +2,12 @@
 {
     public class TK27Adresspost1 : IBetalpost
     {
-        private string t;
-
-        public TK27Adresspost1(string t)
+        public string Adress { get; private set; }
+        public string Postnummer { get; private set; }
+        public TK27Adresspost1(string textrad)
         {
-            this.t = t;
+            Adress = textrad.Substring(2, 35).Trim();
+            Postnummer = textrad.Substring(37, 9).Trim();
         }
 
         public bool KanLäggaTillPoster

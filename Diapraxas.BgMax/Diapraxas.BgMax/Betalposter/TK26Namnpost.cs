@@ -2,13 +2,14 @@
 
 namespace Diapraxas.BgMax.Betalposter
 {
-    class TK26Namnpost : IBetalpost
+    public class TK26Namnpost : IBetalpost
     {
-        private string t;
-
-        public TK26Namnpost(string t)
+        public string Betalarnamn { get; set; }
+        public string Extranamn { get; set; }
+        public TK26Namnpost(string textrad)
         {
-            this.t = t;
+            Betalarnamn = textrad.Substring(2, 35).Trim();
+            Extranamn = textrad.Substring(37, 35).Trim();
         }
 
         public bool KanLäggaTillPoster

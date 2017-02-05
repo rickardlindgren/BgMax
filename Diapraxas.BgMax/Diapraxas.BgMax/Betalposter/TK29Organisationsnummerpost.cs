@@ -1,12 +1,11 @@
 ﻿namespace Diapraxas.BgMax.Betalposter
 {
-    class TK29Organisationsnummerpost : IBetalpost
+    public class TK29Organisationsnummerpost : IBetalpost
     {
-        private string t;
-
-        public TK29Organisationsnummerpost(string t)
+        public string Organisationsnummer { get; private set; }
+        public TK29Organisationsnummerpost(string textrad)
         {
-            this.t = t;
+            Organisationsnummer = textrad.Substring(2, 12).TrimStart('0');
         }
 
         public bool KanLäggaTillPoster
