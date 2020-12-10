@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Diapraxas.BgMax.Betalposter;
 
 namespace Diapraxas.BgMax
@@ -14,6 +15,13 @@ namespace Diapraxas.BgMax
             TK01Startpost = tk01Startpost;
             TK70Slutpost = tk70Slutpost;
             Avsnitt = avsnitt;
+        }
+
+        public bool IsValid()
+        {
+            return TK70Slutpost.Insättningsposter == Avsnitt.Count
+                   && TK70Slutpost.Betalposter == Avsnitt.Sum(a => a.Betalningar.Count)
+                   && Avsnitt.All(a => a.IsValid());
         }
     }
 }

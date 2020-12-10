@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Diapraxas.BgMax.Betalposter;
 
 namespace Diapraxas.BgMax
@@ -40,6 +41,12 @@ namespace Diapraxas.BgMax
             rowlists.Add(rowlist);
 
             Betalningar = GetBetalningar(rowlists);
+        }
+
+        public bool IsValid()
+        {
+            return Tk15Insättningspost.AntalBetalningar == Betalningar.Count
+                   && Tk15Insättningspost.Insättningsbelopp == Betalningar.Sum(b => b.Tk20Betalpost.Betalningsbelopp);
         }
 
         private List<Betalning> GetBetalningar(List<List<string>> avdelningsrader)
