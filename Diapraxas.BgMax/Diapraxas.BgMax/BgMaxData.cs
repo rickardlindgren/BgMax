@@ -15,5 +15,12 @@ namespace Diapraxas.BgMax
             TK70Slutpost = tk70Slutpost;
             Avsnitt = avsnitt;
         }
+
+        public bool IsValid()
+        {
+            return TK70Slutpost.Insättningsposter == Avsnitt.Count
+                   && TK70Slutpost.Betalposter == Avsnitt.Sum(a => a.Betalningar.Count)
+                   && Avsnitt.All(a => a.IsValid());
+        }
     }
 }
