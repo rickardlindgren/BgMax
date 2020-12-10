@@ -37,6 +37,11 @@ namespace Diapraxas.BgMax
                 rowlist.Add(textrad);
             }
 
+            if (textrad.StartsWith("70"))
+            {
+                continue;
+            }
+
             rowlists.Add(rowlist);
 
             Betalningar = GetBetalningar(rowlists);
