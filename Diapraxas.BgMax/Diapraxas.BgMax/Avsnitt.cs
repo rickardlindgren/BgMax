@@ -42,6 +42,12 @@ namespace Diapraxas.BgMax
             Betalningar = GetBetalningar(rowlists);
         }
 
+        public bool IsValid()
+        {
+            return Tk15Insättningspost.AntalBetalningar == Betalningar.Count
+                   && Tk15Insättningspost.Insättningsbelopp == Betalningar.Sum(b => b.Tk20Betalpost.Betalningsbelopp);
+        }
+
         private List<Betalning> GetBetalningar(List<List<string>> avdelningsrader)
         {
             List<Betalning> betalningar = new List<Betalning>();
